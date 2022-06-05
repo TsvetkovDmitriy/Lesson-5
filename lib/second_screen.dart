@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+import 'package:lesson5/main.dart';
+
+String myString = '';
 
 class AbstractCar{
   int speed = 10;
@@ -21,6 +25,7 @@ class AbstractCar{
 
   void toPrint(){
     print("Машина $name со скоростью $speed км/ч");
+    myString = myString + "Машина $name со скоростью $speed км/ч\n';
   }
 }
 
@@ -129,8 +134,8 @@ void altRegisteredFinal(List<int> speedsToSet, List<String> namesToSet){
 }
 
 
-void sled(){
-
+void main(){
+  myString = '';
   // Первая задача
   try {
     print("1.1");
@@ -178,4 +183,27 @@ void sled(){
     print("Oops, smth went wrong because of the following exception:\n" + e.toString());
   }
 
+}
+
+class SecondScreen extends StatelessWidget {
+  const SecondScreen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // StatelessWidget widget1 = StatelessWidget();
+    main();
+    double width = MediaQuery.of(context).size.width;
+    print (widthю.toString() + 'ширина экрана');
+    if (width > 460) {
+      return Scaffold(
+        body: Center(child: SingleChildScrollView(child: Text(myString,
+          style: TextStyle(fontSize: 24),)),),
+      );
+    } else {
+    return Scaffold(
+      body: Center(child: SingleChildScrollView(child: Text(myString.
+      style: TextStyle(fontSize: 10),)),),
+    );
+  }
+  
 }
