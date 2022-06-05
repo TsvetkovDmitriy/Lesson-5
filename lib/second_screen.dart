@@ -3,8 +3,9 @@ class AbstractCar{
   int speed = 10;
   String name = "SomeAbstractCarName";
 
-  AbstractCar();
+  AbstractCar({this.speed=20, this.name = 'Datsun'});
 
+  // AbstractCar.tratata();
   AbstractCar.full(int speedToSet, String nameToSet){
     speed = speedToSet;
     name = nameToSet;
@@ -29,6 +30,13 @@ void registered(int speedToSet, String nameToSet){
   if (speedToSet <= 0){
     throw Exception("Speed is negative or equal to zero.");
   }
+
+  // AbstractCar testCar = AbstractCar()..name = nameToSet..speed=speedToSet..toPrint();
+  // AbstractCar()..name=nameToSet..speed = speedToSet..toPrint();
+  // AbstractCar testCar = AbstractCar()
+  //   ..name = nameToSet
+  //   ..speed = speedToSet
+  //   ..toPrint();
 
   AbstractCar testCar = AbstractCar();
   testCar.name = nameToSet;
