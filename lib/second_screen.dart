@@ -1,3 +1,5 @@
+// import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:lesson5/main.dart';
 
@@ -25,7 +27,7 @@ class AbstractCar{
 
   void toPrint(){
     print("Машина $name со скоростью $speed км/ч");
-    myString = myString + "Машина $name со скоростью $speed км/ч\n';
+    myString = myString + 'Машина $name со скоростью $speed км/ч\n';
   }
 }
 
@@ -192,18 +194,47 @@ class SecondScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // StatelessWidget widget1 = StatelessWidget();
     main();
-    double width = MediaQuery.of(context).size.width;
-    print (widthю.toString() + 'ширина экрана');
+    double width = MediaQuery
+        .of(context)
+        .size
+        .width;
+    // print (widthю.toString() + 'ширина экрана');
     if (width > 460) {
       return Scaffold(
+        appBar: AppBar(title: Text('Заголовок экрана')),
         body: Center(child: SingleChildScrollView(child: Text(myString,
           style: TextStyle(fontSize: 24),)),),
       );
     } else {
-    return Scaffold(
-      body: Center(child: SingleChildScrollView(child: Text(myString.
-      style: TextStyle(fontSize: 10),)),),
-    );
+      return Scaffold(
+        appBar: AppBar(title: Text('Заголовок экрана')),
+        // drawerEdgeDragWidth: width*0.7,
+        endDrawer: Container(width: width*0.7, color: Colors.lightGreen,
+          child: Column(
+            children: [
+              SizedBox(height: 200,),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Text('Страница 1', style: TextStyle(fontSize: 24),),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Text('Страница 2', style: TextStyle(fontSize: 24),),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Text('Страница 3', style: TextStyle(fontSize: 24),),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Text('Страница 4', style: TextStyle(fontSize: 24),),
+              ),
+            ],
+          ),
+        ),
+        body: Center(child: SingleChildScrollView(child: Text(myString,
+          style: TextStyle(fontSize: 16),),)),
+      );
   }
-  
+  }
 }
